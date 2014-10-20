@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat tables.sql | mysql -h localhost -u selfsame_potato -psWastEmam4sA selfsame_dmills2

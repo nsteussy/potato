@@ -1,0 +1,80 @@
+<jsp:include page='header.jsp'></jsp:include>
+<div id='deck-editbox' class='container'>
+	<input id='main-flashcard-input-name' type='text' placeholder='Enter Name of Deck'>
+	<div id='main-flashcard-editbox-container'>
+	  	<div id='main-flashcard-editbox-new' class='main-flashcard-editbox row'>
+	  		<div class='col-md-5'>
+	  			<div class='main-flashcard-container'>
+			  		<div class='main-flashcard main-flashcard-front'>
+			  			<textarea id='main-flashcard-input-front' class='main-flashcard-input' placeholder='Enter Card Front Content'></textarea>
+			  		</div>
+			  	</div>
+		  	</div>
+		  	<div class='col-md-5'>
+			  	<div class='main-flashcard-container'>
+			  		<div class='main-flashcard main-flashcard-back'>
+			  			<textarea id='main-flashcard-input-back' class='main-flashcard-input' placeholder='Enter Card Back Content'></textarea>
+		  			</div>
+			  	</div>
+		  	</div>
+		  	<div class='col-md-2 main-builder-nav-container'>
+		  		<button id="main-flashcard-input-save" class='btn btn-primary btn-block'>Save Card</button>
+		  	</div>
+	  	</div>
+	</div>
+
+	<button class='btn btn-lg btn-block btn-primary'>Save This Deck</button>
+	<button class='btn btn-lg btn-block btn-primary'>Share This Deck</button>
+	<button class='btn btn-lg btn-block btn-primary'>Study This Deck</button>
+</div>
+<script>
+function drawCard(card) {
+	var html = 
+		"<div id='main-flashcard-editbox-" + card['flashCardId'] + "' class='main-flashcard-editbox row'>" +
+			"<div class='col-md-5'>" +
+				"<div class='main-flashcard-container'>" +
+			  		"<div class='main-flashcard main-flashcard-front'>" +
+			  			"<textarea class='main-flashcard-input' placeholder='" + card['front'] + "'>" + card['front'] + "</textarea>" +
+			  		"</div>" +
+		  		"</div>" +
+		  	"</div>" +
+		  	"<div class='col-md-5'>" +
+			  	"<div class='main-flashcard-container'>" +
+			  		"<div class='main-flashcard main-flashcard-back'>" +
+			  			"<textarea class='main-flashcard-input' placeholder='" + card['back'] + "'>" + card['back'] + "</textarea>" +
+		  			"</div>" +
+			  	"</div>" +
+		  	"</div>" +
+		  	"<div class='col-md-2 main-builder-nav-container'>" +
+		  		"<button class='btn btn-danger btn-block'>Delete Card</button>" +
+		  	"</div>" +
+	  	"</div>";
+	$('#main-flashcard-editbox-container').prepend(html);
+}
+var dm = new DeckManager();
+var deckId = ${deckID};
+var privateID = dm.hasDeck(deckId);
+if (privateID != undefined) {
+	var prom = dm.getDeckPublic(deckId);
+	prom.then(function(data) {
+		deck = data;
+		$('#main-flashcard-input-name').val(deck['nickname']);
+		for (var i = 0; i < deck['flashCards'].length; i++) {
+			console.log(deck['flashCards'][i]);
+			drawCard(deck['flashCards'][i]);
+		}
+	});
+}
+
+$(document).on('click', '#main-flashcard-input-save', function() {
+	var front = $('#main-flashcard-input-front').val().trim();
+	var back = $('#main-flashcard-input-back').val().trim();
+	console.log(front + ' ' + back);
+	if (front != "" && back != "") {
+		cardAdded = dm.addCard(privateID, front, back);
+		cardAdded.then(function(data) { console.log(data); });
+	}
+});
+</script>
+
+<jsp:include page='footer.jsp'></jsp:include>

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat tables.sql | mysql -h 50.151.34.38 -u potato -psPana4Cr potato

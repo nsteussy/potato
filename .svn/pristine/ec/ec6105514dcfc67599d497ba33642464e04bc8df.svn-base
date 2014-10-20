@@ -1,0 +1,42 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.stereotype.Repository;
+
+import edu.iastate.se329.domain.FlashCard;
+
+/**
+ * Database Access Object for the flash card object
+ * @author Brian Suther
+ *
+ */
+@SuppressWarnings("unchecked")
+@Repository
+public class FlashCardDaoImpl implements FlashCardDao {
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	//NamedParameterJdbcTemplate template;
+	
+	private static String getFlashCardsByUserId = "SELECT f.id, f.deck_id, f.prompt, f.answer, d.user_id FROM flash_cards f INNER JOIN decks d ON d.id = f.deck_id WHERE d.user_id = :userId";
+	private static String getFlashCardsByDeckId = "SELECT f.id, f.deck_id, f.prompt, f.answer FROM flash_cards f WHERE f.deck_id = :deckId";
+
+	
+	public List<FlashCard> getFlashCardsByUserId(Long userId) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("userId", userId);
+		//return template.query(getFlashCardsByUserId, params, new FlashCardRowMapper());
+		return null;
+	}
+	
+	public List<FlashCard> getFlashCardsByDeckId(Long deckId) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("deckId", deckId);
+		//return template.query(getFlashCardsByDeckId, params, new FlashCardRowMapper());
+		return null;
+	}
+}

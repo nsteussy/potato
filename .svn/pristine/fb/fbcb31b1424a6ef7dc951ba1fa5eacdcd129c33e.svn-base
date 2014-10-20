@@ -1,0 +1,17 @@
+.main-navigation { margin-bottom: 0px; }
+.main-footer { 
+	margin-top: 40px;
+	padding-top: 40px;
+	padding-bottom: 4px;
+	color: #777;
+	border-top: 1px solid #eee; }
+
+.main-flashcard-container { padding: 16px; }
+/* Only Apply box shadow and radius when card is in a container. */
+.main-flashcard-container > .main-flashcard {
+	box-shadow: 1px 1px 1px #eee;
+	border-radius: 3px; }
+.main-flashcard {
+	text-align: center;
+	height: 200px;
+	border: 1px solid #ccc; }

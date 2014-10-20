@@ -1,0 +1,50 @@
+package edu.iastate.se329.domain;
+
+import java.util.Date;
+
+/**
+ * An object to create an alert to know when a homework is due or an exam is coming up, etc.
+ * @author SaldinBajric
+ *
+ */
+public class Alert {
+	private Long userId;
+	private Long id;
+	private String alertName;
+	private Date alertDate;
+	
+	public Alert() {}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAlertName() {
+		return alertName;
+	}
+
+	public void setAlertName(String alertName) {
+		this.alertName = alertName;
+	}
+
+	public Date getAlertDate() {
+		return alertDate;
+	}
+
+	public void setAlertDate(Date alertDate) {
+		this.alertDate = alertDate;
+	}
+
+}	

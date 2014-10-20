@@ -1,0 +1,15 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import edu.iastate.se329.domain.Deck;
+
+@Repository
+public interface DeckDao {
+	public List<Deck> getDeckByEditId(String editId);
+	public List<Deck> getDeckByDeckId(Long deckId);
+	public Deck createDeck(Deck deck);
+	public Deck updateDeck(Deck deck);
+}

@@ -1,0 +1,55 @@
+<jsp:include page='header.jsp'></jsp:include>
+<div class='container'>
+	<input id='main-flashcard-input-name' type='text' placeholder='Enter Name of Deck'>
+	<div class='row'>
+	  <div class='col-md-1 hidden-sm hidden-xs'>
+	  	<div class='main-builder-nav-container'>
+			<button type='button' class='main-builder-nav main-builder-previous' title='Previous Card'><span class='glyphicon glyphicon-chevron-left'></span></button>
+		</div>
+	  </div>
+	  <div class='col-md-5 col-sm-6'>
+	  	<div class='main-flashcard-container'>
+	  		<div class='main-flashcard main-flashcard-front'>
+	  			<textarea id='main-flashcard-input-front' class='main-flashcard-input' placeholder='Enter Card Front Content'></textarea>
+	  		</div>
+	  	</div>
+	  </div>
+	  <div class='col-md-5 col-sm-6'>
+	  	<div class='main-flashcard-container'>
+	  		<div class='main-flashcard main-flashcard-back'>
+	  			<textarea id='main-flashcard-input-back' class='main-flashcard-input' placeholder='Enter Card Back Content'></textarea>
+  			</div>
+	  	</div>
+	  </div>
+	  <div class='col-md-1 hidden-sm hidden-xs'>
+	  	<div class='main-builder-nav-container'>
+			<button type='button' class='main-builder-nav main-builder-next' title='Next/New Card'><span class='glyphicon glyphicon-chevron-right'></span></button>
+		</div>
+	  </div>
+	</div>
+	<div class='row'>
+		<div class='col-xs-6 hidden-md hidden-lg'><button type='button' class='main-builder-nav main-builder-previous' title='Previous Card'><span class='glyphicon glyphicon-chevron-left'></span></button></div>
+		<div class='col-xs-6 hidden-md hidden-lg'><button type='button' class='main-builder-nav main-builder-next' title='Next/New Card'><span class='glyphicon glyphicon-chevron-right'></span></button></div>
+	</div>
+	<div class='row'>
+		<div class='col-md-offset-8 col-md-2 col-sm-6'>
+			<button class='btn btn-lg btn-block btn-primary'>Share This Deck</button>
+		</div>
+		<div class='col-md-2 col-sm-6'>
+			<button class='btn btn-lg btn-block btn-primary'>Study This Deck</button>
+		</div>
+	</div>	
+</div>
+<script>
+$(document).ready(function() {
+$.ajax({
+	type: 'POST',
+	url: 'createDeck',
+	data: { 'action': 'herp' }
+	})
+	.done(function(msg) {
+		console.log(msg);
+	});
+});
+</script>
+<jsp:include page='footer.jsp'></jsp:include>

@@ -1,0 +1,10 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import edu.iastate.se329.domain.FlashCard;
+
+public interface FlashCardDao {
+	public List<FlashCard> getFlashCardsByUserId(Long userId);
+	public List<FlashCard> getFlashCardsByDeckId(Long deckId);
+}

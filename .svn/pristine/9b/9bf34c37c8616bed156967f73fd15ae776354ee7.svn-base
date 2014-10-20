@@ -1,0 +1,32 @@
+<jsp:include page="header.jsp"></jsp:include>
+<div class='container'>
+	<div class="row">
+	  <div class="col-md-2">
+	  	<h3> Deck Builder </h3>
+	  	<ul class="list-group">
+		  <li class="list-group-item">Cras justo odio</li>
+		  <li class="list-group-item">Dapibus ac facilisis in</li>
+		  <li class="list-group-item">Morbi leo risus</li>
+		  <li class="list-group-item">Porta ac consectetur ac</li>
+		  <li class="list-group-item">Vestibulum at eros</li>
+		</ul>
+	  	<button type='button' class='btn btn-cefault'>New Card</button>
+	  </div>
+	  <div class="col-md-5">
+	  	<div class='main-flashcard-container'>
+	  		<div class='main-flashcard main-flashcard-front'>
+	  			<h2> Flashcard Front </h2>
+	  		</div>
+	  	</div>
+	  </div>
+	  <div class="col-md-5">
+	  	<div class='main-flashcard-container'>
+	  		<div class='main-flashcard main-flashcard-back'>
+	  			<h2> Flashcard Back </h2>
+  			</div>
+	  	</div>
+	  </div>
+	</div>
+	<button class='btn btn-primary'>Save This Deck</button>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>

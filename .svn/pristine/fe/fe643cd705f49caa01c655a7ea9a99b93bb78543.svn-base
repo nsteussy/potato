@@ -1,0 +1,34 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import edu.iastate.se329.domain.Deck;
+import edu.iastate.se329.rowmapper.DeckRowMapper;
+
+/**
+ * Database Access Object for the deck object
+ * @author Brian Suther
+ *
+ */
+@SuppressWarnings("unchecked")
+public class DeckDaoImpl implements DeckDao {
+
+	@Autowired
+	JdbcTemplate template;
+
+	@Override
+	public List<Deck> getDeckByUserId(Long userId) {
+		String sql = "";
+		return template.query(sql, new Object[]{userId}, new DeckRowMapper());
+	}
+
+	@Override
+	public List<Deck> getDeckByDeckId(Long deckId) {
+		String sql = "";
+		return template.query(sql, new Object[]{deckId}, new DeckRowMapper());
+	}
+	
+}

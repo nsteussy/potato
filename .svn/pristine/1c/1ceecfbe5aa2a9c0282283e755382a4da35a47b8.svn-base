@@ -1,0 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page='header.jsp'></jsp:include>
+<div class='container'>
+	<h3>Browse Decks</h3>
+	<table class="table table-striped table-hover">
+		<tr><th>Deck Name</th><th><span class="pull-right">Action</span></th></tr>
+		<c:forEach items="${decks}"  var="deck">
+			<c:if test="${!empty deck.nickname}">
+				<tr>
+					<td>${deck.nickname}</td>
+					<td><a href="${pageContext.request.contextPath}/controller/api/decks/${deck.deckId}" class="pull-right">View</a></td>
+				</tr>
+			</c:if>
+		</c:forEach>
+	</table>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>

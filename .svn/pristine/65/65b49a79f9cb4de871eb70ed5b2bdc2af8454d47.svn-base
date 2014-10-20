@@ -1,0 +1,13 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import edu.iastate.se329.domain.FlashCard;
+
+@Repository
+public interface FlashCardDao {
+	public List<FlashCard> getFlashCardsByUserId(Long userId);
+	public List<FlashCard> getFlashCardsByDeckId(Long deckId);
+}

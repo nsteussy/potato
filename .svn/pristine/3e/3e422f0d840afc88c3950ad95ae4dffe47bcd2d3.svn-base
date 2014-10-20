@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- CSS imports -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- JavaScript Imports -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+</head>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<p align="center"><img src="${pageContext.request.contextPath}/img/potato.gif" /></p>
+	<div class="jumbotron">
+      <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+	<div class='container'></div>
+		<p>hello</p>
+	</div>
+</body>
+</html>

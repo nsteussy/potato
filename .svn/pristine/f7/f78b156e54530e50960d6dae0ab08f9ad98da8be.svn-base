@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- CSS imports -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- JavaScript Imports -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+</head>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="jumbotron">
+      <div class="container">
+      	<img class='pull-left' src="${pageContext.request.contextPath}/img/potato.gif" />
+        <h1>Study Faster!</h1>
+        <p>Flash Potato makes it easy to study. Build a deck of flash cards and share it with your friends to study.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Build a Deck &raquo;</a></p>
+      </div>
+    </div>
+	<div class='container'></div>
+		<p>hello</p>
+	</div>
+</body>
+</html>

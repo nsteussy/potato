@@ -1,0 +1,63 @@
+package edu.iastate.se329.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.stereotype.Repository;
+
+import edu.iastate.se329.domain.Deck;
+import edu.iastate.se329.rowmapper.DeckRowMapper;
+
+/**
+ * Database Access Object for the deck object
+ * @author Brian Suther
+ *
+ */
+@SuppressWarnings("unchecked")
+@Repository
+public class DeckDaoImpl implements DeckDao {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	FlashCardDao flashCardDao;
+	
+	//private static String getDeckByUserId = "SELECT d.id, d.user_id, d.nickname, f.id, f.prompt, f.answer FROM decks d INNER JOIN flash_cards f ON d.id = f.deck_id WHERE d.user_id = :id";
+	//private static String getDecksByUserId = "SELECT d.id, d.user_id, d.nickname FROM decks d WHERE d.user_id = :userId";
+	//private static String getDeckById = "SELECT d.id, d.user_id, d.nickname FROM decks d WHERE d.id = :id";
+	private static String getDecksByUserId = "SELECT d.id, d.user_id, d.nickname FROM decks d WHERE d.user_id = ?";
+	private static String getDeckById = "SELECT d.id, d.user_id, d.nickname FROM decks d WHERE d.id = ?";
+
+	@Override
+	public List<Deck> getDeckByUserId(Long userId) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("userId", userId);
+		List<Deck> list = jdbcTemplate.query(getDecksByUserId, new Object[] {userId}, new DeckRowMapper());
+		//List<Deck> list = template.query(getDecksByUserId, params, new DeckRowMapper());
+		//list = this.populateRelations(list);
+		return list;
+		//return null;
+	}
+
+	@Override
+	public List<Deck> getDeckByDeckId(Long deckId) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id", deckId);
+		//List<Deck> list = template.query(getDeckById, params, new DeckRowMapper());
+		//list = this.populateRelations(list);
+		//return list;
+		return null;
+	}
+	
+	private List<Deck> populateRelations(List<Deck> decks)
+	{
+		for (Deck d : decks)
+		{
+			d.setFlashCards(flashCardDao.getFlashCardsByDeckId(d.getDeckId()));
+		}
+		return decks;
+	}
+	
+}

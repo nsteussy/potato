@@ -1,0 +1,40 @@
+package edu.iastate.se329.domain;
+
+/**
+ * A Flash Potato card.
+ * @author SaldinBajric
+ *
+ */
+public class FlashCard {
+	private Long publicId;
+	private Long deckId;
+	private String front;
+	private String back;
+	
+	public FlashCard() {}
+	
+	public Long getPublicId() {
+		return publicId;
+	}
+	public void setPublicId(Long publicId) {
+		this.publicId = publicId;
+	}
+	public Long getDeckId() {
+		return deckId;
+	}
+	public void setDeckId(Long deckId) {
+		this.deckId = deckId;
+	}
+	public String getFront() {
+		return front;
+	}
+	public void setFront(String front) {
+		this.front = front;
+	}
+	public String getBack() {
+		return back;
+	}
+	public void setBack(String back) {
+		this.back = back;
+	}
+}

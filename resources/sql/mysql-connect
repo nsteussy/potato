@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#host: box832.bluehost.com
+#user: selfsame_potato
+#pass: sWastEmam4sA
+#name: selfsame_dmills2
+
+#mysql -h box832.bluehost.com -u selfsame_potato -p selfsame_dmills2
+#mysql -h localhost -u selfsame_potato -psWastEmam4sA selfsame_dmills2
+mysql -h 50.151.34.38 -u potato -psPana4Cr potato

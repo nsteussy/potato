@@ -1,0 +1,35 @@
+var API_ROOT = '/FlashPotato/controller';
+
+function DeckManager() {
+	this.myDecks = localStorage.getItem['flashPotatoDecks'];
+	if (!this.myDecks) {
+		this.myDecks = {};
+		localStorage.setItem('flashPotatoDecks', JSON.stringify(this.myDecks));
+	} else {
+		this.myDecks = JSON.parse(this.myDecks);
+	}
+}
+
+/* Add a private deck key to local storage */
+DeckManager.prototype.addDeck = function(publicID, privateID) {
+	this.myDecks[publicID] = privateID;
+	localStorage.setItem('flashPotatoDecks', JSON.stringify(this.myDecks));
+}
+
+/* Create a new deck given a nickname */
+DeckManager.prototype.create = function(nickname) {
+	var d = JSON.stringify({ 'nickname': nickname });
+	var manager = this;
+	return $.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: API_ROOT + '/api/decks',
+		data: d
+	})
+	.done(function(data) {
+		manager.addDeck(data['deckId'], data['editId']);
+	})
+	.then(function(data) {		
+		return data;
+	});
+};

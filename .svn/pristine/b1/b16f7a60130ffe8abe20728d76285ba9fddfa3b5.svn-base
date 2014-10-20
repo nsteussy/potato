@@ -1,0 +1,82 @@
+var API_ROOT = '/FlashPotato/controller';
+
+function DeckManager() {
+	this.myDecks = localStorage.getItem('flashPotatoDecks');
+	if (!this.myDecks) {
+		this.myDecks = {};
+		localStorage.setItem('flashPotatoDecks', JSON.stringify(this.myDecks));
+	} else {
+		this.myDecks = JSON.parse(this.myDecks);
+	}
+}
+
+DeckManager.prototype.getMyDecks = function() { return this.myDecks; }
+
+/* Add a private deck key to local storage */
+DeckManager.prototype.addDeck = function(publicID, privateID) {
+	this.myDecks[publicID] = privateID;
+	localStorage.setItem('flashPotatoDecks', JSON.stringify(this.myDecks));
+}
+
+/* Create a new deck given a nickname */
+DeckManager.prototype.create = function(nickname) {
+	var d = JSON.stringify({ 'nickname': nickname });
+	var manager = this;
+	return $.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: API_ROOT + '/api/decks',
+		data: d
+	})
+	.done(function(data) {
+		manager.addDeck(data['deckId'], data['editId']);
+	});
+};
+
+DeckManager.prototype.getDeckCount = function() {
+	var count = 0;
+	for (var key in this.myDecks) {
+		count++;
+	}
+	return count;
+}
+
+DeckManager.prototype.getDeckPublic = function(deckId) {
+	return $.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: API_ROOT + '/api/decks/' + deckId
+	});
+}
+
+DeckManager.prototype.hasDeck = function(deckId) {
+	return this.myDecks[deckId];
+}
+
+DeckManager.prototype.addCard = function(privDeckId, cFront, cBack) {
+	return $.ajax({
+		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/',
+		type:"POST",
+		data: JSON.stringify({ front: cFront, back: cBack }),
+		contentType:"application/json; charset=utf-8",
+		dataType:"json"
+	});
+}
+
+DeckManager.prototype.deleteCard = function(privDeckId, cardId) {
+	return $.ajax({
+		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/' + cardId,
+		type:"DELETE"
+	});
+}
+
+DeckManager.prototype.updateCard = function(pubDeckId, cardId, cFront, cBack) {
+	var privDeckId = this.hasDeck(pubDeckId);
+	return $.ajax({
+		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/' + cardId,
+		type:"PUT",
+		data: JSON.stringify({ flashCardId: cardId, deckId: pubDeckId, front: cFront, back: cBack }),
+		contentType:"application/json; charset=utf-8",
+		dataType:"json"
+	});
+}

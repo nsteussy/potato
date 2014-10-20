@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS flash_cards (
+	id int AUTO_INCREMENT NOT NULL,
+	deck_id int NOT NULL,
+	prompt text,
+	answer text
+);
+
+CREATE TABLE IF NOT EXISTS decks (
+	id INT AUTO_INCREMENT NOT NULL,
+	nickname VARCHAR(255)
+);
