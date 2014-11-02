@@ -1,4 +1,4 @@
-var API_ROOT = '/FlashPotato/controller';
+var API_ROOT = '/FlashPotato/controller/api/';
 
 function DeckManager() {
 	this.myDecks = localStorage.getItem('flashPotatoDecks');
@@ -25,7 +25,7 @@ DeckManager.prototype.create = function(nickname) {
 	return $.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: API_ROOT + '/api/decks',
+		url: API_ROOT + 'decks',
 		data: d
 	})
 	.done(function(data) {
@@ -45,7 +45,7 @@ DeckManager.prototype.getDeckPublic = function(deckId) {
 	return $.ajax({
 		type: 'GET',
 		contentType: 'application/json',
-		url: API_ROOT + '/api/decks/' + deckId
+		url: API_ROOT + 'decks/' + deckId
 	});
 }
 
@@ -55,7 +55,7 @@ DeckManager.prototype.hasDeck = function(deckId) {
 
 DeckManager.prototype.addCard = function(privDeckId, cFront, cBack) {
 	return $.ajax({
-		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/',
+		url: API_ROOT + 'decks/edit/' + privDeckId + '/flash-cards/',
 		type:"POST",
 		data: JSON.stringify({ front: cFront, back: cBack }),
 		contentType:"application/json; charset=utf-8",
@@ -65,7 +65,7 @@ DeckManager.prototype.addCard = function(privDeckId, cFront, cBack) {
 
 DeckManager.prototype.deleteCard = function(privDeckId, cardId) {
 	return $.ajax({
-		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/' + cardId,
+		url: API_ROOT + 'decks/edit/' + privDeckId + '/flash-cards/' + cardId,
 		type:"DELETE"
 	});
 }
@@ -73,7 +73,7 @@ DeckManager.prototype.deleteCard = function(privDeckId, cardId) {
 DeckManager.prototype.updateCard = function(pubDeckId, cardId, cFront, cBack) {
 	var privDeckId = this.hasDeck(pubDeckId);
 	return $.ajax({
-		url:'/FlashPotato/controller/api/decks/edit/' + privDeckId + '/flash-cards/' + cardId,
+		url: API_ROOT + 'decks/edit/' + privDeckId + '/flash-cards/' + cardId,
 		type:"PUT",
 		data: JSON.stringify({ flashCardId: cardId, deckId: pubDeckId, front: cFront, back: cBack }),
 		contentType:"application/json; charset=utf-8",

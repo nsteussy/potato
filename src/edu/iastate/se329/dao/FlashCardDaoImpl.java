@@ -9,6 +9,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+
 import edu.iastate.se329.domain.FlashCard;
 import edu.iastate.se329.rowmapper.FlashCardRowMapper;
 
@@ -58,8 +60,8 @@ public class FlashCardDaoImpl implements FlashCardDao {
 		}
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("deckId", flashCard.getDeckId());
-		params.addValue("front", flashCard.getFront());
-		params.addValue("back", flashCard.getBack());
+		params.addValue("front", escapeHtml(flashCard.getFront()));
+		params.addValue("back", escapeHtml(flashCard.getBack()));
 		KeyHolder kh = new GeneratedKeyHolder();
 		namedParameterTemplate.update(createFlashCard, params, kh, new String[] {"id"});
 		flashCard.setFlashCardId(kh.getKey().longValue());
@@ -70,8 +72,8 @@ public class FlashCardDaoImpl implements FlashCardDao {
 	public FlashCard updateFlashCard(FlashCard flashCard) {
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("deckId", flashCard.getDeckId());
-		params.addValue("front", flashCard.getFront());
-		params.addValue("back", flashCard.getBack());
+		params.addValue("front", escapeHtml(flashCard.getFront()));
+		params.addValue("back", escapeHtml(flashCard.getBack()));
 		params.addValue("id", flashCard.getFlashCardId());
 		int rows = namedParameterTemplate.update(updateFlashCard, params);
 		return flashCard;
