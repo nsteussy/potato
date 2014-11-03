@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- CSS imports -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/dataTables.bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/DataTables-1.10.3/examples/resources/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- JavaScript Imports -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/DeckManager.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/scroller/1.2.2/js/dataTables.scroller.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/DataTables-1.10.3/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/DataTables-1.10.3/examples/resources/bootstrap/3/dataTables.bootstrap.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default main-navigation" role="navigation">
