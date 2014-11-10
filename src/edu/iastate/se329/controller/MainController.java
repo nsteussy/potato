@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.iastate.se329.dao.DeckDao;
 import edu.iastate.se329.domain.Deck;
+import edu.iastate.se329.domain.MultipleChoiceQuiz;
 
 @Controller
 @RequestMapping(value="/main")
@@ -63,5 +64,14 @@ public class MainController {
 		List<Deck> decks = deckDao.getDeckByDeckId(id);
 		model.addAttribute("deck", decks.get(0));
 		return "studyDeck";
+	}
+	
+	@RequestMapping(value = "/multChoice/decks/{id}", method = RequestMethod.GET)
+	public String getMultipleChoicePage(@PathVariable long id, Model model)
+	{
+		List<Deck> decks = deckDao.getDeckByDeckId(id);
+		model.addAttribute("deck", decks.get(0));
+		model.addAttribute("quiz", new MultipleChoiceQuiz(decks.get(0)));
+		return "multipleChoice";
 	}
 }

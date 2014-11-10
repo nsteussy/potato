@@ -27,6 +27,7 @@ if (count > 0) {
 				'<td>' + 
 					data['nickname'] + ' <span class="badge">' + data['flashCards'].length + ' cards</span></td>' +
 				'<td><span class="pull-right">' +
+				'<a href="${pageContext.request.contextPath}/controller/main/multChoice/decks/' + data['deckId'] + '">Quiz</a> / ' +
 				'<a href="${pageContext.request.contextPath}/controller/main/decks/' + data['deckId'] + '">View</a> / ' +
 				'<a href="${pageContext.request.contextPath}/controller/main/deckEditor/' + data['deckId'] + '">Edit</a>'
 				'</span></td></tr>';
