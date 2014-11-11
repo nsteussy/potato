@@ -23,24 +23,22 @@ public class MultipleChoiceQuiz {
 			String answer = card.getBack();
 			ArrayList<String> answers = new ArrayList<String>();
 			
-			int[] possibleIndices = new int[cards.size()];
+			String[] possibleIndices = new String[cards.size()];
 			for(int j = 0; j < cards.size(); j++) {
-				possibleIndices[j] = j;
+				possibleIndices[j] = cards.get(j).getBack();
 			}
 			
 			swap(possibleIndices, i, cards.size() - 1);
 			Random rand = new Random();
 			
 			for(int j = 1; j < numAnswers && j < cards.size(); j++) {
-				int index = rand.nextInt(numAnswers - j - 1);
-				String curAnswer = cards.get(possibleIndices[index]).getBack();
-				
+				int index = rand.nextInt(cards.size() - j);
+				String curAnswer = possibleIndices[index];
 				answers.add(curAnswer);
-				
 				swap(possibleIndices, index, cards.size()-j-1);
 			}
 			
-			answers.add(rand.nextInt((int) Math.min(numAnswers, cards.size())), answer);
+			answers.add(rand.nextInt(answers.size()+1), answer);
 			questions.add(new MultipleChoiceQuestion(clue, answer, answers));
 		}
 		
@@ -50,8 +48,8 @@ public class MultipleChoiceQuiz {
 		return questions;
 	}
 	
-	private void swap(int[] arr, int i, int j) {
-		int temp = arr[i];
+	private void swap(String[] arr, int i, int j) {
+		String temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
