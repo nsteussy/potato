@@ -30,5 +30,18 @@
 			<tr><td>Tester & Integrator</td><td>Jacob Bertram</td></tr>
 		</tbody>
 	</table>
+	
+	<p>Team Indecisive added additional features, such as user profiles, an improved user interface, and additional quiz features:</p>
+	<table class="table table-striped">
+		<thead>
+			<tr><th>Role</th><th>Team Member</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>Project Manager</td><td>Nathan Steussy</td></tr>
+			<tr><td>Architect</td><td></td></tr>
+			<tr><td>Systems Engineer</td><td></td></tr>
+			<tr><td>Tester & Integrator</td><td>Jorden</td></tr>
+		</tbody>
+	</table>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
