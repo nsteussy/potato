@@ -32,7 +32,6 @@
 	      <ul id='main-navbar' class="nav navbar-nav navbar-left">
 	        <li><a href="${pageContext.request.contextPath}/controller/main/deckCreator">Create a Deck</a></li>
 	        <li><a href="${pageContext.request.contextPath}/controller/main/browseDecks">Browse Decks</a></li>
-	        <!-- to modify the other information here, look for the <script> in the footer :) -->
           </ul>
           <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${pageContext.request.contextPath}/controller/main/about">About</a></li>
