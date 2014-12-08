@@ -13,5 +13,13 @@ CREATE TABLE IF NOT EXISTS decks (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS users (
+	id INT AUTO_INCREMENT NOT NULL,
+	username varchar(30) NOT NULL,
+	password varchar(30) NOT NULL,
+	email varchar(255),
+	PRIMARY KEY (id)
+);
+
 
 -- TODO: foreign key constraints

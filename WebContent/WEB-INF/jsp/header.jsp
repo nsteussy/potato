@@ -32,6 +32,7 @@
 	      <ul id='main-navbar' class="nav navbar-nav navbar-left">
 	        <li><a href="${pageContext.request.contextPath}/controller/main/deckCreator">Create a Deck</a></li>
 	        <li><a href="${pageContext.request.contextPath}/controller/main/browseDecks">Browse Decks</a></li>
+	        <!-- to edit the other options that appear here, look for the script in footer (my decks and sign in options)-->
           </ul>
           <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${pageContext.request.contextPath}/controller/main/about">About</a></li>
