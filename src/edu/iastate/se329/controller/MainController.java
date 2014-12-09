@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.iastate.se329.dao.DeckDao;
 import edu.iastate.se329.domain.Deck;
+import edu.iastate.se329.domain.FreeResponseQuiz;
 import edu.iastate.se329.domain.MultipleChoiceQuiz;
 
 @Controller
@@ -78,5 +79,14 @@ public class MainController {
 		model.addAttribute("deck", decks.get(0));
 		model.addAttribute("quiz", new MultipleChoiceQuiz(decks.get(0)));
 		return "multipleChoice";
+	}
+	
+	@RequestMapping(value = "/freeResponse/decks/{id}", method = RequestMethod.GET)
+	public String getFreeResponseQuizPage(@PathVariable long id, Model model)
+	{
+		List<Deck> decks = deckDao.getDeckByDeckId(id);
+		model.addAttribute("deck", decks.get(0));
+		model.addAttribute("quiz", new FreeResponseQuiz(decks.get(0)));
+		return "freeResponseQuiz";
 	}
 }
