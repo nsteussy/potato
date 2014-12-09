@@ -28,12 +28,15 @@
 <jsp:include page="footer.jsp"></jsp:include>
 <script>
 $('#submitQuiz').click(function() {
+	// turn all wrong guesses red
 	$("input:checked[correct='false']").parent().css('background-color', '#d9534f');
 	
+	// highlight all correct answers green
 	$("input[correct='true']").parent().css('background-color', '#5cb85c');
 	$("#submitQuiz").css("display", "none");
 	$("#retry").css("display", "inline-block");
 	
+	// calculate score
 	var correct = $("input:checked[correct='true']").length;
 	var total = correct + $("input:checked[correct='false']").length;
 	

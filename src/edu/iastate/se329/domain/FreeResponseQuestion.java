@@ -25,6 +25,9 @@ public class FreeResponseQuestion {
 	 * @param guess 
 	 */
 	public boolean isCorrect(String guess) {
+		System.out.println("guess: "+ guess);
+		System.out.println("answer: "+ answer);
+		
 		return answer.equalsIgnoreCase(guess);
 	}
 	
