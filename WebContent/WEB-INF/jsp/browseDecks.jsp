@@ -9,7 +9,12 @@
 				<c:if test="${!empty deck.nickname}">
 					<tr>
 						<td>${deck.nickname}</td>
-						<td><span class="pull-right"><a href="${pageContext.request.contextPath}/controller/main/decks/${deck.deckId}">View</a> / <a href="#" id="${deck.deckId}" class="shareDeckModal">Share</a></span></td>
+						<td><span class="pull-right">
+							<a href="${pageContext.request.contextPath}/controller/main/decks/${deck.deckId}"  style="margin-right:30px;">View</a>  
+							<a href="${pageContext.request.contextPath}/controller/main/freeResponse/decks/${deck.deckId}" style="margin-right:30px;">Free Response Quiz</a> 
+							<a href="${pageContext.request.contextPath}/controller/main/multChoice/decks/${deck.deckId}" style="margin-right:30px;">Multiple Choice Quiz</a>
+							<a href="#" id="${deck.deckId}" class="shareDeckModal">Share</a>
+						</span></td>
 					</tr>
 				</c:if>
 			</c:forEach>

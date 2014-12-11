@@ -16,11 +16,14 @@ import edu.iastate.se329.dao.DeckDao;
 import edu.iastate.se329.domain.Deck;
 import edu.iastate.se329.domain.FreeResponseQuiz;
 import edu.iastate.se329.domain.MultipleChoiceQuiz;
+import edu.iastate.se329.user.User;
 
 @Controller
 @RequestMapping(value="/main")
 public class MainController {
 	@Autowired DeckDao deckDao;
+	
+	User user;
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public String view(HttpServletRequest req, HttpServletResponse resp, Model model) {
@@ -56,6 +59,7 @@ public class MainController {
 	
 	@RequestMapping(value="/signUp", method = RequestMethod.GET)
 	public String newUser(HttpServletRequest req, HttpServletResponse resp, Model model) {
+		model.addAttribute("user", user);
 		return "signUp";
 	}
 	

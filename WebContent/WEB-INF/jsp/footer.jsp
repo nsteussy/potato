@@ -8,6 +8,8 @@ $(document).ready(function() {
 	if (count > 0) {
 		$('#main-navbar').append('<li><a href="${pageContext.request.contextPath}/controller/main/myDecks">Local Decks <span class="badge">' + count + '</span></a></li>');
 	}
+	
+	
 });
 </script>
 </body>

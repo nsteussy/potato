@@ -26,9 +26,30 @@
 	  	</div>
 	</div>
 
-	<button class='btn btn-lg btn-block btn-primary'>Share This Deck</button>
+	<button class='btn btn-lg btn-block btn-primary modal'>Share This Deck</button>
 	<button class='btn btn-lg btn-block btn-primary'>Study This Deck</button>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Share this Deck!</h4>
+			</div>
+			<div class="modal-body">
+				<input id="deckUrl" class="form-control" />
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 function drawCard(card, top) {
 	var html = 
