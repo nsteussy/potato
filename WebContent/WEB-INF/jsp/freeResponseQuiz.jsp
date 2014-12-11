@@ -12,7 +12,7 @@
 	  		<div class="col-md-12 col-lg-12">
 				
 				<p><h4>${question.getClue()}</h4>
-					Your answer: <br /><input type="text" correct="${question.getAnswer()}" id="guess${question.getUID()}" />
+					Your answer: <br /><input type="text" correct="${question.getAnswer()}" id="guess${question.getUID()}" value=""/>
 					<label style="display:none" id="answer${question.getUID()}">Correct answer: ${question.getAnswer()}</label>			
 				</p>
 				<hr>
@@ -38,8 +38,15 @@ $('#submitQuiz').click(function() {
 		// get the id of div user entered their guess into.
 		guessDiv = "guess" + "${question.getUID()}";
 		// now check if it is correct, using info to color code and update score
-		var guess = $(guessDiv).value;
-		isCorrect = ${question.isCorrect(document.getElementById(guessDiv).value)};
+		var guess = $("#"+guessDiv).value;
+		//var isCorrect = ${question.isCorrect(document.getElementById(guessDiv).value)};
+		//var isCorrect = (guess.toLowerCase() == "${question.getAnswer()}".toLowerCase());
+		var isCorrect
+		if (total%2==0){
+			isCorrect=true;
+		} else {
+			isCorrect=false;
+		}
 		if (isCorrect){
 			//color textbox green
 			$(document.getElementById(guessDiv)).css('background-color', '#5cb85c');
