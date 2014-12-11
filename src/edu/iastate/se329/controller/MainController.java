@@ -59,6 +59,11 @@ public class MainController {
 		return "signUp";
 	}
 	
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String logInPage(HttpServletRequest req, HttpServletResponse resp, Model model){
+		return "login";
+	}
+	
 	/**
 	 * Everytime this URL is hit we probably want to go to the View/study deck page. If you need to get a deck for another reason
 	 * besides going to the study page then you can just call the 2 lines in this method in one of the methods already made in 
