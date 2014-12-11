@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page='header.jsp'></jsp:include>
 <div class='container'>
 	<h3>
@@ -38,15 +39,14 @@ $('#submitQuiz').click(function() {
 		// get the id of div user entered their guess into.
 		guessDiv = "guess" + "${question.getUID()}";
 		// now check if it is correct, using info to color code and update score
-		var guess = $("#"+guessDiv).value;
+		//var guess = $("#"+guessDiv).value;
 		//var isCorrect = ${question.isCorrect(document.getElementById(guessDiv).value)};
 		//var isCorrect = (guess.toLowerCase() == "${question.getAnswer()}".toLowerCase());
-		var isCorrect
-		if (total%2==0){
-			isCorrect=true;
-		} else {
-			isCorrect=false;
-		}
+		var isCorrect;
+		var guess = document.getElementById(guessDiv).value;
+		// COMPARE user guess with correct answer
+		isCorrect = guess == "${question.getAnswer()}";
+	
 		if (isCorrect){
 			//color textbox green
 			$(document.getElementById(guessDiv)).css('background-color', '#5cb85c');

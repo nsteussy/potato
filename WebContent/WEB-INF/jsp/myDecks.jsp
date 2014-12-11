@@ -1,6 +1,6 @@
 <jsp:include page='header.jsp'></jsp:include>
 <div id='main-container' class='container'>
-	<h1>Your Decks <small id='your-decks-loading'>loading &hellip;</small></h1>
+	<h1>Local Decks <small id='your-decks-loading'>loading &hellip;</small></h1>
 	<table id='your-decks' class='table table-striped table-hover' style='display: none;'>
 		<thead>
 			<tr>
@@ -27,9 +27,11 @@ if (count > 0) {
 				'<td>' + 
 					data['nickname'] + ' <span class="badge">' + data['flashCards'].length + ' cards</span></td>' +
 				'<td><span class="pull-right">' +
-				'<a href="${pageContext.request.contextPath}/controller/main/multChoice/decks/' + data['deckId'] + '">Quiz</a> / ' +
-				'<a href="${pageContext.request.contextPath}/controller/main/decks/' + data['deckId'] + '">View</a> / ' +
-				'<a href="${pageContext.request.contextPath}/controller/main/deckEditor/' + data['deckId'] + '">Edit</a>'
+				'<a href="${pageContext.request.contextPath}/controller/main/decks/' + data['deckId'] + '" style="margin-right:30px;">View</a>  ' +
+				'<a href="${pageContext.request.contextPath}/controller/main/deckEditor/' + data['deckId'] + '" style="margin-right:30px;">Edit</a>' +
+				'<a href="#" style="margin-right:30px;">Share</a> ' +
+				'<a href="#" style="margin-right:30px;">Free Response Quiz</a> ' +
+				'<a href="${pageContext.request.contextPath}/controller/main/multChoice/decks/' + data['deckId'] + '">Multiple Choice Quiz</a>  ' +
 				'</span></td></tr>';
 			$('#your-decks tbody').append(row);
 		});
